@@ -11,7 +11,11 @@ from linebot.models import (
     MessageEvent, TextMessage, TextSendMessage,ImageSendMessage,ImageMessage
 )
 
+
 app = Flask(__name__,static_folder="tmp")
+
+tmppath = os.path.dirname(os.path.abspath(__file__))
+print(tmppath)
 
 #環境変数取得
 YOUR_CHANNEL_ACCESS_TOKEN = os.environ["YOUR_CHANNEL_ACCESS_TOKEN"]
@@ -59,7 +63,7 @@ def handle_image(event):
     # message_idから画像のバイナリデータを取得
     message_content = line_bot_api.get_message_content(message_id)
 
-    with open(Path(f"tmp/{message_id}.jpg").absolute(), "wb") as f:
+    with open(f"{tmppath}/tmp/{message_id}.jpg".absolute(), "wb") as f:
         # バイナリを1024バイトずつ書き込む
         for chunk in message_content.iter_content():
             f.write(chunk)
