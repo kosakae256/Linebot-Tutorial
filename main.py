@@ -8,7 +8,7 @@ from linebot.exceptions import (
     InvalidSignatureError
 )
 from linebot.models import (
-    MessageEvent, TextMessage, TextSendMessage,
+    MessageEvent, TextMessage, TextSendMessage,ImageSendMessage
 )
 
 app = Flask(__name__)
@@ -46,6 +46,10 @@ def handle_message(event):
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=event.message.text))
+    if event.message.text == "画像":
+        line_bot_api.reply_message(
+        event.reply_token,
+        ImageSendMessage(preview_image_url="https://kosakae256-testapp-linebot.herokuapp.com/tmp/testimg.jpg"))
 
 if __name__ == "__main__":
 #    app.run()
