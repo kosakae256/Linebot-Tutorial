@@ -50,7 +50,7 @@ def handle_message(event):
     if event.message.text == "画像":
         line_bot_api.reply_message(
         event.reply_token,
-        ImageSendMessage(preview_image_url=original_content_url='https://kosakae256-testapp-linebot.herokuapp.com/tmp/testimg.jpg',"https://kosakae256-testapp-linebot.herokuapp.com/tmp/testimg.jpg"))
+        ImageSendMessage(original_content_url='https://kosakae256-testapp-linebot.herokuapp.com/tmp/testimg.jpg',preview_image_url="https://kosakae256-testapp-linebot.herokuapp.com/tmp/testimg.jpg"))
 
 if __name__ == "__main__":
 #    app.run()
